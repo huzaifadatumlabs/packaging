@@ -30,6 +30,11 @@ jobs:
     - name: Build the package
       run: |
         poetry build
+    - name: Debug Environment Variables
+      run: |
+        echo $env:POETRY_HTTP_BASIC_PYPI_USERNAME
+        echo "Token length: $((echo $env:POETRY_HTTP_BASIC_PYPI_PASSWORD).Length)"
+      shell: pwsh
 
     - name: Publish to PyPI
       env:
